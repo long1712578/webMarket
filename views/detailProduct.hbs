@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 vertical-center">
+    {{#each proDetail}}
+      <div class="thumbnail">
+        <img src="{{image}}" alt="{{name}}">
+        <div class="caption">
+          <h2>{{name}}</h2>
+          <p class="price">${{price}}</p>
+          <form method="POST" action="../cart/{{id}}">
+            <label for="quantity">Select quantity</label>
+            <select class="form-control product-dropdown" id="quantity" name="quantity">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <button class="btn btn-default noPad" type="submit" value="Submit">Add To Cart</button>
+          </form>
+            <a href="/products" class="back-to-products btn btn-default" role="button">Back to all products</a> 
+          
+        </div>
+      </div>
+    {{/each}}
+    </div>
+  </div>
+</div>
