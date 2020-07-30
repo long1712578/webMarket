@@ -4,18 +4,17 @@
 <div class="row cart-row"> 
   
     {{#each psell}}
-        <div class="col-sm-6 col-md-4 product">
-          <div class="thumbnail">
+        <div class="col-sm-6 col-md-4 product" style="margin-top: 10px;">
+          <div class="thumbnail" style="background-color: blanchedalmond; border-width: 1px; border-style: solid;">
             <a href="/products/ps/{{id_sp}}">
               <img alt="{{name}}" src="{{image}}" style="height: 290px;"></a>
               <div class="caption">
-              <h3>{{name}}</h3>
-              <p class="price">Gia: ${{price}}</p>
-              <p class="soluong">So luong: {{soluong}}</p>
-              <form method="POST" action="/cart/{{id_sp}}">
+              <h4 style="text-align: center;">{{name}}</h4>
+              <p class="price" style="color: red;">Giá: ${{price}}</p>
+              <p class="soluong" style="color: blue;">Số lượng: {{soluong}}</p>
               
-                <button class="btn btn-success" type="submit" value="Submit">Thêm vào giỏ</button>
-                </form>
+                <button class="add-to-cart" data-id="{{id_sp}}" type="submit" value="Submit" style="display: block; margin-left: auto; margin-right: auto;">Thêm vào giỏ</button>
+
                 </br>
               <p><a href="/products/ps/{{id_sp}}" class="btn btn-primary btn-block view-product" role="button">Xem chi tiết</a>
             </div>
@@ -28,18 +27,15 @@
    <hr>
 <div class="row cart-row"> 
 {{#each ps}}
-        <div class="col-sm-6 col-md-4 product">
-          <div class="thumbnail">
+        <div class="col-sm-6 col-md-4 product" style="margin-top: 10px;">
+          <div class="thumbnail" style="background-color: blanchedalmond; border-width: 1px; border-style: solid;">
             <a href="/products/ps/{{id_sp}}">
               <img alt="{{name}}" src="{{image}}" style="height: 290px;"></a>
               <div class="caption">
-              <h3>{{name}}</h3>
-              <p class="price">Gia: ${{price}}</p>
-              <p class="soluong">So luong: {{soluong}}</p>
-              <form method="POST" action="/cart/{{id_sp}}">
-              
-                <button class="btn btn-success" type="submit" value="Submit" style="align-items: center;">Thêm vào giỏ</button>
-                </form>
+              <h4 style="text-align: center;">{{name}}</h4>
+              <p class="price" style="color: red;">Giá: ${{price}}</p>
+              <p class="soluong" style="color: blue;">Số lượng: {{soluong}}</p>
+                <button class="add-to-cart" data-id="{{id_sp}}" type="submit" value="Submit" style="display: block; margin-left: auto; margin-right: auto;">Thêm vào giỏ</button>
                 <br>
               <p><a href="/products/ps/{{id_sp}}" class="btn btn-primary btn-block view-product" role="button">Xem chi tiết</a>
             </div>

@@ -14,7 +14,7 @@
                 <a class="nav-link text-light" href="/">TRANG CHỦ <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-light" href="/Shop">CỬA HÀNG<span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" href="/MyShop">CỬA HÀNG<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
@@ -39,20 +39,14 @@
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                     Account
                 </a>
-                {{!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item text-dark" href="#">Profile</a>
-                    <a class="dropdown-item text-dark" href="#">Bill</a>
-                    <a class="dropdown-item text-dark" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-success" href="#">Sign out</a>
-                </div> --}}
+                
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item text-dark" href="/signIn">Sign in</a>
                     <a class="dropdown-item text-success" href="/signUp">Sign up</a>
                 </div>
             </li>
-            <a class="nav-link text-light" href="#" aria-disabled="true">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <a class="nav-link text-light" onclick="location.href='/cart'"  aria-disabled="true">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="nav-shop_circle" id="cart-badge"> {{totalQuantity}}</span>
             </a>
         </ul>
     </div>

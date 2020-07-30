@@ -5,9 +5,10 @@ app.use(express.static(__dirname+ '/public'));
 
 //Chuyen tu file tinh thanh cac temple handlebar
 let expressHbs=require('express-handlebars');
-let express_session=require('express-session');
+let session=require('express-session');
 let express_handlebars_sections=require('express-handlebars-sections');
 let body_parser=require('body-parser');
+let cookie_parser=require('cookie-parser');
 //Cau hinh hbs
 let hbs=expressHbs.create({
     extname: 'hbs',
@@ -26,25 +27,44 @@ app.engine('.hbs', expressHbs({
     layoutsDir: __dirname+'/views/layouts', //thu muc chinh
     partialsDir: __dirname+"/views/partials",//Chua cac thu muc con thanh phan
 }));
-
-app.use(express_session({
+//Use session
+app.use(session({
     secret: "qweasdzxc",
     resave: false,
     saveUninitialized: true
 }));
 app.set('view engine','hbs');
+//body-parser
 app.use(body_parser.urlencoded({
     extended: true
 }));
-
 app.use(body_parser.json());
+//Use cookie-parser
+app.use(cookie_parser());
+//Use session cookie
+app.use(session({
+    cookie: {httpOnly: true, maxAge: 30*24*60*60*1000},
+    secret: 'Secrect',
+    resave: false,
+    saveUninitialized: false
+}));
+//Use cart controller
+//Init cart
+let Cart=require('./models/cartM');
+app.use((req,res,next)=>{
+    var cart=new Cart(req.session.cart ? req.session.cart:{});
+    req.session.cart=cart;
+    res.locals.totalQuantity=cart.totalQuantity;
+    next();
+});
 
 app.use('/', require('./controllers/indexC'));
 app.use('/products',require('./controllers/categoryC'));
 app.use('/products/ps',require('./controllers/productC'));
-//app.use("/signUp", signup);
 app.use("/", require('./controllers/signInC'));
 app.use("/", require('./controllers/signUpC'));
+app.use("/cart",require('./controllers/cartC'));
+
 
 app.set('port',3000);
 app.listen(app.get('port'),()=>{
