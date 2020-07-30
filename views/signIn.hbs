@@ -1,6 +1,4 @@
-{{!-- {{#section 'javascript'}}
 
-{{/section}} --}}
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="container">
   <div class="row">
@@ -22,7 +20,7 @@
             reCAPTCHA is not selected.
           </div>
           {{/if}}
-          <form class="form-signin" action="/signin" method="post">
+          <form class="form-signin" action="/signIn" method="post">
             <div class="form-label-group">
               <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Username" required
                 autofocus>
@@ -41,10 +39,6 @@
             <div class="g-recaptcha mt-3 mb-3" data-sitekey="6LdV7scUAAAAALUQJ3xEqGOkbW6YBTTbG6ayI9Wa"></div>
             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
             <hr class="my-4">
-            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i
-                class="fab fa-google mr-2"></i> Sign in with Google</button>
-            <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i
-                class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
           </form>
           <a class="nav-link" href="/signUp">Not a member? <u>Sign up now</u></a>
         </div>

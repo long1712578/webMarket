@@ -5,6 +5,9 @@ app.use(express.static(__dirname+ '/public'));
 
 //Chuyen tu file tinh thanh cac temple handlebar
 let expressHbs=require('express-handlebars');
+let express_session=require('express-session');
+let express_handlebars_sections=require('express-handlebars-sections');
+let body_parser=require('body-parser');
 //Cau hinh hbs
 let hbs=expressHbs.create({
     extname: 'hbs',
@@ -14,12 +17,28 @@ let hbs=expressHbs.create({
 
 });
 app.engine('hbs',hbs.engine);
-app.set('view engine','hbs');
+app.engine('.hbs', expressHbs({
+    helpers: {
+        section: express_handlebars_sections()
+    },
+    extname: '.hbs',
+    defaultLayout: 'layout',
+    layoutsDir: __dirname+'/views/layouts', //thu muc chinh
+    partialsDir: __dirname+"/views/partials",//Chua cac thu muc con thanh phan
+}));
 
-//default root server layout
-//  app.get('/',(req,res)=>{
-//      res.render('index');
-//  });
+app.use(express_session({
+    secret: "qweasdzxc",
+    resave: false,
+    saveUninitialized: true
+}));
+app.set('view engine','hbs');
+app.use(body_parser.urlencoded({
+    extended: true
+}));
+
+app.use(body_parser.json());
+
 app.use('/', require('./controllers/indexC'));
 app.use('/products',require('./controllers/categoryC'));
 app.use('/products/ps',require('./controllers/productC'));

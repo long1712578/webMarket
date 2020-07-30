@@ -1,5 +1,6 @@
 
-<div><p style="color: red;font-size: 20px; font-weight: bold;">SẢN PHẨM BÁN CHẠY</p></div>
+<h2 class="text-center">SẢN PHẨM BÁN CHẠY</h2>
+<hr>
 <div class="row cart-row"> 
   
     {{#each psell}}
@@ -13,13 +14,6 @@
               <p class="soluong">So luong: {{soluong}}</p>
               <form method="POST" action="/cart/{{id_sp}}">
               
-                {{!-- <select class="form-control product-dropdown" id="quantity" name="quantity">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select> --}}
                 <button class="btn btn-success" type="submit" value="Submit">Thêm vào giỏ</button>
                 </form>
                 </br>
@@ -30,8 +24,8 @@
       {{/each}}
 </div>
   </br>
-   <div><p style="color: red;font-size: 20px; font-weight: bold;">DANH SÁCH SẢN PHẨM</p></div>
-   </br>
+   <h2 class="text-center">SẢN PHẨM </h2>
+   <hr>
 <div class="row cart-row"> 
 {{#each ps}}
         <div class="col-sm-6 col-md-4 product">
@@ -98,4 +92,6 @@
                 </li>
           {{/if}}
       </ul>  
-    </nav> 
+    </nav>
+
+    
