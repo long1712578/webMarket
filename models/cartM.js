@@ -28,12 +28,16 @@ module.exports = function Cart(oldCart) {
         if (!storedItem) {
             this.items[id] = { item: item, quantity: 0, price: 0 };
             storedItem = this.items[id];
+            //console.log("priceItem: "+storedItem.item);
         }
-        storedItem.item.price = parseFloat(storedItem.item.price);
+        //console.log( storedItem.item[0].price);
+        storedItem.item[0].price = parseFloat(storedItem.item[0].price);
         storedItem.quantity += parseInt(quantity);
-        storedItem.price = parseFloat(storedItem.item.price * storedItem.quantity);
+        storedItem.price = parseFloat(storedItem.item[0].price * storedItem.quantity);
         this.totalQuantity = this.getTotalQuantity();
         this.totalPrice = this.getTotalPrice();
+        
+        //console.log("end");
         return this.getCartItem(id);
     };
 
@@ -50,7 +54,7 @@ module.exports = function Cart(oldCart) {
         var storedItem = this.items[id];
         if (storedItem && quantity >= 1) {
             storedItem.quantity = quantity;
-            storedItem.price = parseFloat(storedItem.item.price * storedItem.quantity);
+            storedItem.price = parseFloat(storedItem.item[0].price * storedItem.quantity);
             this.totalQuantity = this.getTotalQuantity();
             this.totalPrice = this.getTotalPrice();
         }

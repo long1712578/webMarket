@@ -28,23 +28,24 @@ app.engine('.hbs', expressHbs({
     partialsDir: __dirname+"/views/partials",//Chua cac thu muc con thanh phan
 }));
 //Use session
-app.use(session({
-    secret: "qweasdzxc",
-    resave: false,
-    saveUninitialized: true
-}));
+// app.use(session({
+//     secret: "qweasdzxc",
+//     resave: false,
+//     saveUninitialized: true
+// }));
 app.set('view engine','hbs');
 //body-parser
-app.use(body_parser.urlencoded({
-    extended: true
-}));
 app.use(body_parser.json());
+app.use(body_parser.urlencoded({
+    extended: false,
+}));
+
 //Use cookie-parser
 app.use(cookie_parser());
 //Use session cookie
 app.use(session({
     cookie: {httpOnly: true, maxAge: 30*24*60*60*1000},
-    secret: 'Secrect',
+    secret: 'S3crect',
     resave: false,
     saveUninitialized: false
 }));
@@ -64,6 +65,7 @@ app.use('/products/ps',require('./controllers/productC'));
 app.use("/", require('./controllers/signInC'));
 app.use("/", require('./controllers/signUpC'));
 app.use("/cart",require('./controllers/cartC'));
+app.use("/myShop",require('./controllers/shopC'));
 
 
 app.set('port',3000);

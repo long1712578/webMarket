@@ -1,0 +1,28 @@
+<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+                    {{!-- //Ten cua hang --}}
+					<h1>{{name}}</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Của hàng</li>
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+</section>
+<div class="row py-2">
+                <div class="col-md-3">
+                     <div class="card-h-100-shadow">
+                         {{> side}}
+                     </div>
+                </div>
+                <div class="col-md-9">
+                     <div class="card-h-100-shadow">
+                         {{> contentShop}}
+                     </div>
+                </div>
+            </div>

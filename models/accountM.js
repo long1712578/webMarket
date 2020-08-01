@@ -16,5 +16,10 @@ module.exports = {
             return rs[0];
         }
         return null;
-    }
-}
+    },
+    userById: async(username)=>{
+        const sql=`SELECT f_ID FROM ${tbName} WHERE f_Username='${username}'`;
+        const rows=await db.load(sql);
+        return rows;
+    },
+};

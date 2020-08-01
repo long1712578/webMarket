@@ -20,20 +20,33 @@ router.post('/signIn', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const user = await account.getByUsername(username);
+    //console.log(user);
     if(user == null) {
         res.render('signIn', {layout: 'layout', showAlert: true});
         return;
     }
     const pwDb = user.f_Password;
     const salt = pwDb.substring(hashLength, pwDb.length);
-    console.log("slai: "+pwDb.length);
+    //console.log("slai: "+pwDb.length);
     const preHash = password + salt;
     const hash = sha('sha256').update(preHash).digest('hex');
     const pwHash = hash + salt;
     if(pwHash === pwDb) {
-        console.log("oke 123");
+        //console.log("oke 123");
         req.session.user = user.f_ID;
-        res.redirect('/');
+        const mShop=require('../models/shopM');
+        const nameShop=await mShop.nameShopById(user.f_ID);
+        const ma=nameShop[0].MaCuaHang;
+        const ps=await mShop.productShopById(ma);
+        console.log(ps);
+        req.session.ps=ps;
+        req.session.TenCuaHang = nameShop[0].TenCuaHang;
+        //console.log(nameShop[0].MaCuaHang);
+        req.session.MaCuaHang=nameShop[0].MaCuaHang;
+       
+
+        //console.log(ps);
+        res.redirect('/myShop');
     }
     else {
         res.render('signIn', {layout: 'layout', showAlert: true});

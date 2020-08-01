@@ -56,4 +56,13 @@ module.exports={
         const rows=await db.load(sql);
         return rows;
     },
+    updateQuantity: async(id,quantity)=>{
+        const sql1=`SELECT soluong FROM ${tbProduct} WHERE id_sp=${id}`;
+        const count=await db.load(sql1);
+        //console.log(count[0].soluong);
+        const sl=parseInt(count[0].soluong-quantity);
+        let sql =`UPDATE  ${tbProduct} SET soluong=${sl} WHERE id_sp=${id}`;
+        const rows=await db.load(sql);
+        return rows;
+    },
 };
