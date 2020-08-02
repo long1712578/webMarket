@@ -1,0 +1,40 @@
+<div class="container">
+    <h3 style="text-align: center;">{{title}}</h3>
+    {{#each ps}}
+    <form action="/myShop/update" method="post">
+        <div class="form-group">
+            <label for="name" style="font-weight: bold;">Id</label>
+            <input value="{{id_sp}}" type="text" class="form-control" id="email" name="id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="name" style="font-weight: bold;">Name</label>
+            <input value="{{name}}" type="text" class="form-control" id="email" name="name" readonly>
+        </div>
+        <div class="form-group">
+            <label for="name" style="font-weight: bold;">Image</label>
+            <input value="{{image}}" type="text" class="form-control" id="image" name="image" readonly>
+        </div>
+        <div class="form-group">
+            <label for="image" style="font-weight: bold;">Price</label>
+            <input value="{{price}}" type="text" class="form-control" id="email" name="price">
+        </div>
+        {{!-- <div class="form-group">
+            <label for="price" style="font-weight: bold;">Loai sp</label>
+            <input value="{{id_loaisp}}" type="text" class="form-control" id="cat" name="cat" readonly>
+        </div> --}}
+        <div class="form-group">
+            <label for="name"  style="font-weight: bold;">So luong</label>
+            <input value="{{soluong}}" type="text" class="form-control" id="email" name="count">
+        </div>
+        <div class="form-group">
+            <label for="name"  style="font-weight: bold;">Uu tien</label>
+            <input value="{{uutien}}" type="text" class="form-control" id="email" name="uutien">
+        </div>
+        <div class="form-group">
+            <label for="name"  style="font-weight: bold;">Cua hang</label>
+            <input value="{{cuahang}}" type="text" class="form-control" id="email" name="shop" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    {{/each}}
+</div>

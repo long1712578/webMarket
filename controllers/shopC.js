@@ -44,11 +44,33 @@ router.get('/delete/:id',async(req,res)=>{
     const rows=mPro.del(id);
     const cuuHang=req.session.MaCuaHang;
     var name=req.session.TenCuaHang;
-    //console.log(cuuHang);
     const ps=await mPro.productShopById(cuuHang);
     res.redirect('/myShop');
 
 });
+
+router.get('/edit/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    //const rows=mPro.del(id);
+    //const cuuHang=req.session.MaCuaHang;
+    const ps=await mPro.productShopByIdSP(id);
+    res.render('myShopProEdit',{
+        title: 'Edit Product',
+        ps: ps,
+    });
+
+});
+
+router.post('/update',(req,res)=>{
+    let id=req.body.id;
+    let price=req.body.price;
+    let count=req.body.count;
+    let uutien=req.body.uutien;
+    //let data={id,name,image,price,cat,count,uutien,shop};
+    const ps= mPro.update(id,price,count,uutien);
+    //req.session.ps=ps;
+    res.redirect('/myShop');
+})
 
 module.exports = router;
 

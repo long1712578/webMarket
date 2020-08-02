@@ -14,6 +14,11 @@ module.exports={
         const rows=await db.load(sql);
         return rows;
     },
+    productShopByIdSP:async id=>{
+        const sql=`SELECT * FROM ${tbProduct} WHERE id_sp='${id}'`;
+        const rows=await db.load(sql);
+        return rows;
+    },
     del:async id=>{
         const sql=`DELETE FROM ${tbProduct} WHERE id_sp=${id}`;
         const rows=await db.load(sql);
@@ -24,12 +29,10 @@ module.exports={
         const rows=await db.load(sql);
         return rows;
     },
-    update:async entity=>{
-        const [nr,err]=await run(db.update(tbProduct,'id_sp',entity));
-        if(err){
-            throw err;
-        }
-        return nr;
+    update:async (id,price,count,uutien1)=>{
+        const sql=`UPDATE ${tbProduct} SET price=${price}, soluong=${count}, uutien=${uutien1} WHERE id_sp=${id} `;
+        const rows=await db.load(sql);
+        return rows;
     },
 
 };
