@@ -1,0 +1,34 @@
+<div class="container">
+    <h3 style="text-align: center;">{{title}}</h3>
+    <form action="/myShop/save" method="post">
+        <div class="form-group">
+            <label for="name" style="font-weight: bold;">Name</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter Name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="name" style="font-weight: bold;">Image</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter image" name="image">
+        </div>
+        <div class="form-group">
+            <label for="image" style="font-weight: bold;">Price</label>
+            <input type="text" class="form-control" id="image" placeholder="Enter price" name="price">
+        </div>
+        <div class="form-group">
+            <label for="price" style="font-weight: bold;">Loai sp</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter categary" name="cat">
+        </div>
+        <div class="form-group">
+            <label for="name"  style="font-weight: bold;">So luong</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter count product" name="count">
+        </div>
+        <div class="form-group">
+            <label for="name"  style="font-weight: bold;">Uu tien</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter uutien" name="uutien">
+        </div>
+        <div class="form-group">
+            <label for="name"  style="font-weight: bold;">Cua hang</label>
+            <input value="{{ma}}" type="text" class="form-control" id="email" name="shop" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>

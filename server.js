@@ -27,12 +27,7 @@ app.engine('.hbs', expressHbs({
     layoutsDir: __dirname+'/views/layouts', //thu muc chinh
     partialsDir: __dirname+"/views/partials",//Chua cac thu muc con thanh phan
 }));
-//Use session
-// app.use(session({
-//     secret: "qweasdzxc",
-//     resave: false,
-//     saveUninitialized: true
-// }));
+
 app.set('view engine','hbs');
 //body-parser
 app.use(body_parser.json());
@@ -71,4 +66,4 @@ app.use("/myShop",require('./controllers/shopC'));
 app.set('port',3000);
 app.listen(app.get('port'),()=>{
     console.log("server port 3000");
-})
+});

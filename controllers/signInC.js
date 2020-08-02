@@ -38,7 +38,7 @@ router.post('/signIn', async (req, res) => {
         const nameShop=await mShop.nameShopById(user.f_ID);
         const ma=nameShop[0].MaCuaHang;
         const ps=await mShop.productShopById(ma);
-        console.log(ps);
+        //console.log(ps);
         req.session.ps=ps;
         req.session.TenCuaHang = nameShop[0].TenCuaHang;
         //console.log(nameShop[0].MaCuaHang);

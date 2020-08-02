@@ -14,6 +14,7 @@ function addToCart(){
         }
     });
 }
+
 function updateCart(id,quantity){
     if(quantity==0){
         removeCartItem(id);
