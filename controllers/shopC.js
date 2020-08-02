@@ -2,13 +2,13 @@ let express=require('express');
 let router=express.Router();
 let mPro=require('../models/shopM');
 
-router.get('/',(req,res)=>{
+router.get('/',async(req,res)=>{
     //var id=req.session.user;
     var name=req.session.TenCuaHang;
     var ma=req.session.MaCuaHang;
-    const ps= req.session.ps;
-    //console.log(ma);
-    //const ps=mPro.productShopById(ma);
+    //const ps= req.session.ps;
+    console.log(ma);
+    const ps=await mPro.productShopById(ma);
     console.log(ps);
     res.render('myShop',{
         name: name,
@@ -46,10 +46,7 @@ router.get('/delete/:id',async(req,res)=>{
     var name=req.session.TenCuaHang;
     //console.log(cuuHang);
     const ps=await mPro.productShopById(cuuHang);
-    res.render('myShop',{
-        ps: ps,
-        name: name,
-    });
+    res.redirect('/myShop');
 
 });
 
